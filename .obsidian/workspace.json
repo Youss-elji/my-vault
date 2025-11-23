@@ -1,0 +1,243 @@
+{
+  "main": {
+    "id": "ce4c056bbe832ef5",
+    "type": "split",
+    "children": [
+      {
+        "id": "035f63f8d7221d14",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "903492fdacc1780c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "02.2_HBW_HighBay_Warehouse.md"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "12858ba2f721d1cf",
+    "type": "split",
+    "children": [
+      {
+        "id": "8546d7414bfd16e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "da44a91dec4d435e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Esplora risorse"
+            }
+          },
+          {
+            "id": "8df9d31f72bd8755",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Ricerca"
+            }
+          },
+          {
+            "id": "db59dce16267023b",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "ed16695e13ad1cbb",
+    "type": "split",
+    "children": [
+      {
+        "id": "25ed3468d60b6d0a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "286bfabe322adc62",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Welcome.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Welcome"
+            }
+          },
+          {
+            "id": "86f81be7402ce116",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Welcome.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Welcome"
+            }
+          },
+          {
+            "id": "81c5f8180e1edf7c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etichette"
+            }
+          },
+          {
+            "id": "4bde924e497236df",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tutte le proprietà"
+            }
+          },
+          {
+            "id": "b6bf8eef65260b13",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Struttura di 02.2_HBW_HighBay_Warehouse.md"
+            }
+          },
+          {
+            "id": "8c582ed39f658909",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          },
+          {
+            "id": "2cf4b7cbb50c7aae",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Apri selezione rapida": false,
+      "graph:Apri vista grafo": false,
+      "canvas:Crea nuova lavagna": false,
+      "daily-notes:Apri nota del giorno": false,
+      "templates:Inserisci modello": false,
+      "command-palette:Apri riquadro comandi": false,
+      "bases:Create new base": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-git:Open Git source control": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "8c582ed39f658909",
+  "lastOpenFiles": [
+    "microfactory-fischertechnik/01_Introduzione.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.10_TPLink_Router_WR902AC.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.9_TXT_Controller_4.0.md.md",
+    "02_10_tplink_router_revised_markdown.md",
+    "02_9_txt_controller_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.8_IoT_Gateway_RaspberryPi.md.md",
+    "02_8_io_t_gateway_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.7_PLC_Siemens_S7-1500.md.md",
+    "02_7_plc_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.6_DPS_Input_Output_NFC.md.md",
+    "02_6_dps_revised_markdown.md",
+    "02_5_ssc_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.5_SSC_Sensor_Station_Camera.md.md",
+    "02_4_sld_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.4_SLD_Sorting_Line_Detection.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.3_MPO_MultiProcessing_Station.md.md",
+    "02_3_mpo_revised_markdown.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.1_VGR_Vacuum_Gripper_Robot.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+    "02_2_hbw_revised_markdown.md",
+    "Senza nome.md",
+    "02_1_vgr_revised_markdown.md",
+    "02.2_HBW_HighBay_Warehouse.md",
+    "02.6_DPS_Input_Output_NFC.md",
+    "02.4_SLD_Sorting_Line_Detection.md",
+    "02.1_VGR_Vacuum_Gripper_Robot.md",
+    "Senza nome.canvas",
+    "microfactory-fischertechnik/02_Componenti_Hardware",
+    "Senza nome.base",
+    "Senza nome 1.base",
+    "microfactory-fischertechnik"
+  ]
+}
