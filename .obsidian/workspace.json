@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
               "title": "02.2_HBW_HighBay_Warehouse.md"
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Riferimenti a 02.2_HBW_HighBay_Warehouse.md"
             }
           },
           {
@@ -185,8 +185,7 @@
               "title": "Advanced Tables"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -206,7 +205,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8c582ed39f658909",
+  "active": "286bfabe322adc62",
   "lastOpenFiles": [
     "microfactory-fischertechnik/01_Introduzione.md.md",
     "microfactory-fischertechnik/02_Componenti_Hardware/02.10_TPLink_Router_WR902AC.md.md",
