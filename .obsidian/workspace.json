@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "035f63f8d7221d14",
+        "id": "80b0bd24b18efe46",
         "type": "tabs",
         "children": [
           {
-            "id": "903492fdacc1780c",
+            "id": "2133d5c365ad698c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
-                "mode": "preview",
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "02.2_HBW_HighBay_Warehouse.md"
+              "title": "Nuova scheda"
             }
           }
         ]
@@ -94,7 +90,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.6_DPS_Input_Output_NFC.md.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +100,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Riferimenti a 02.2_HBW_HighBay_Warehouse.md"
+              "title": "Riferimenti a 02.6_DPS_Input_Output_NFC.md"
             }
           },
           {
@@ -156,13 +152,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+                "file": "microfactory-fischertechnik/01_Introduzione.md.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Struttura di 02.2_HBW_HighBay_Warehouse.md"
+              "title": "Struttura di 01_Introduzione.md"
             }
           },
           {
@@ -189,7 +185,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,34 +202,36 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "286bfabe322adc62",
+  "active": "da44a91dec4d435e",
   "lastOpenFiles": [
-    "microfactory-fischertechnik/01_Introduzione.md.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.10_TPLink_Router_WR902AC.md.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.9_TXT_Controller_4.0.md.md",
-    "02_10_tplink_router_revised_markdown.md",
-    "02_9_txt_controller_revised_markdown.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.8_IoT_Gateway_RaspberryPi.md.md",
-    "02_8_io_t_gateway_revised_markdown.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.7_PLC_Siemens_S7-1500.md.md",
-    "02_7_plc_revised_markdown.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.6_DPS_Input_Output_NFC.md.md",
-    "02_6_dps_revised_markdown.md",
-    "02_5_ssc_revised_markdown.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.5_SSC_Sensor_Station_Camera.md.md",
-    "02_4_sld_revised_markdown.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.4_SLD_Sorting_Line_Detection.md.md",
-    "microfactory-fischertechnik/02_Componenti_Hardware/02.3_MPO_MultiProcessing_Station.md.md",
-    "02_3_mpo_revised_markdown.md",
     "microfactory-fischertechnik/02_Componenti_Hardware/02.1_VGR_Vacuum_Gripper_Robot.md.md",
     "microfactory-fischertechnik/02_Componenti_Hardware/02.2_HBW_HighBay_Warehouse.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.3_MPO_MultiProcessing_Station.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.4_SLD_Sorting_Line_Detection.md.md",
+    "microfactory-fischertechnik/06_supervisione_e_diagnostica.md",
+    "microfactory-fischertechnik/05_logica_di_controllo.md",
+    "microfactory-fischertechnik/04_protocolli_e_rete.md",
+    "microfactory-fischertechnik/03_flussi_operativi.md",
+    "microfactory-fischertechnik/01_architettura.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.5_SSC_Sensor_Station_Camera.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.10_TPLink_Router_WR902AC.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.9_TXT_Controller_4.0.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.8_IoT_Gateway_RaspberryPi.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.7_PLC_Siemens_S7-1500.md.md",
+    "microfactory-fischertechnik/02_Componenti_Hardware/02.6_DPS_Input_Output_NFC.md.md",
+    "microfactory-fischertechnik/Introduzione.md.md",
+    "SSC_errori_calibrazione.md",
+    "microfactory-fischertechnik/microfactory_overview.drawio.png",
+    "microfactory-fischertechnik/Senza nome",
+    "02_10_tplink_router_revised_markdown.md",
+    "02_9_txt_controller_revised_markdown.md",
+    "02_8_io_t_gateway_revised_markdown.md",
+    "02_7_plc_revised_markdown.md",
+    "02_6_dps_revised_markdown.md",
+    "02_5_ssc_revised_markdown.md",
+    "02_4_sld_revised_markdown.md",
+    "02_3_mpo_revised_markdown.md",
     "02_2_hbw_revised_markdown.md",
-    "Senza nome.md",
-    "02_1_vgr_revised_markdown.md",
-    "02.2_HBW_HighBay_Warehouse.md",
-    "02.6_DPS_Input_Output_NFC.md",
-    "02.4_SLD_Sorting_Line_Detection.md",
-    "02.1_VGR_Vacuum_Gripper_Robot.md",
     "Senza nome.canvas",
     "microfactory-fischertechnik/02_Componenti_Hardware",
     "Senza nome.base",

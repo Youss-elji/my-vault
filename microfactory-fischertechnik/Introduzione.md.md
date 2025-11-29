@@ -102,3 +102,5 @@ Il sistema include due dashboard ufficiali:
 Entrambe sono parte centrale del modello Industry 4.0, in quanto mostrano l’integrazione tra dati fisici e sistemi informativi.  
 
 ---
+
+![Schema generale microfactory](microfactory_overview.drawio.png)
