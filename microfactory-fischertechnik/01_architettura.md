@@ -7,6 +7,7 @@ Questa sezione presenta la **visione complessiva** della Learning Factory 4.0: l
 # 1. Vista Generale della Fabbrica
 
 ![Schema generale](microfactory_overview.drawio.png)
+
 ---
 
 # 2. Architettura Logica Completa
@@ -35,7 +36,7 @@ flowchart TB
     end
 
     CLOUD[(Cloud Fischertechnik)]:::cloud
-    ROUTER{{TP-Link WR902AC}}:::net
+    ROUTER{{TP-Link WR802N}}:::net
 
     HBW --> VGR --> MPO --> SLD --> DPS
     SSC --> TXT
@@ -55,25 +56,26 @@ flowchart TB
     ROUTER -. WiFi .-> TXT
     ROUTER -. Internet .-> CLOUD
 ```
+*Figura 1.1: Schema semplificato dell'architettura della Learning Factory 4.0*
 
 ---
 
 # 3. Chi Controlla Cosa (Tabella OT/IT)
 Questa sezione definisce il ruolo dei diversi livelli del sistema.
 
-| Livello | Componente | Responsabilità |
-|---------|------------|----------------|
-| **OT (Operativo)** | PLC Siemens S7-1500 | Controllo reale della produzione, gestione sensori/attuatori, sicurezza |
-| **Edge** | IoT Gateway (Node-RED) | Calibrazioni, dashboard, comunicazione OPC-UA→MQTT, gestione file |
-| **IoT Device** | TXT Controller 4.0 | Lettura NFC, telecamera, sensori, sincronizzazione con cloud |
-| **Cloud** | Fischer Cloud | Gestione ordini, dashboard remota |
-| **Networking** | TP-Link WR902AC | Gestione rete interna, DHCP, connessione Internet |
-| **Moduli fisici** | HBW, VGR, MPO, SLD, DPS, SSC | Parte meccatronica che movimenta e processa il pezzo |
+| Livello            | Componente                        | Responsabilità                                                          |
+| ------------------ | --------------------------------- | ----------------------------------------------------------------------- |
+| **OT (Operativo)** | PLC Siemens S7-1500 (192.168.0.1) | Controllo reale della produzione, gestione sensori/attuatori, sicurezza |
+| **Edge**           | IoT Gateway (Node-RED)            | Calibrazioni, dashboard, comunicazione OPC-UA→MQTT, gestione file       |
+| **IoT Device**     | TXT Controller 4.0                | Lettura NFC, telecamera, sensori, sincronizzazione con cloud            |
+| **Cloud**          | Fischer Cloud                     | Gestione ordini, dashboard remota                                       |
+| **Networking**     | TP-Link WR802N                    | Gestione rete interna, DHCP, connessione Internet                       |
+| **Moduli fisici**  | HBW, VGR, MPO, SLD, DPS, SSC      | Parte meccatronica che movimenta e processa il pezzo                    |
 
 ---
 
 # 4. Flusso di Comunicazione OT → IT → Cloud
-Qui mostro in che modo i dati e i comandi si spostano tra PLC, Gateway, TXT e Cloud. È utile per capire come avviene la sincronizzazione.
+Qua si dimostra in che modo i dati e i comandi si spostano tra PLC, Gateway, TXT e Cloud. È utile per capire come avviene la sincronizzazione.
 
 ```mermaid
 sequenceDiagram
@@ -105,7 +107,7 @@ flowchart LR
     classDef net fill:#fffde7,stroke:#f9a825,stroke-width:1px,color:#f57f17;
     classDef dev fill:#e3f2fd,stroke:#1565c0,stroke-width:1px,color:#0d47a1;
 
-    ROUTER{{TP-Link WR902AC}}:::net
+    ROUTER{{TP-Link WR802N}}:::net
     PLC([PLC S7-1500]):::dev
     GATEWAY([IoT Gateway – RPi]):::dev
     TXT([TXT Controller 4.0]):::dev
@@ -123,7 +125,4 @@ flowchart LR
 La fabbrica si basa sul concetto di **sistema cyber-fisico**: una parte fisica fatta di moduli reali e una parte digitale fatta di PLC, Gateway, TXT e Cloud. È proprio la comunicazione continua tra queste due parti che rende la microfactory un esempio realistico di Industry 4.0.
 
 ---
-
-# 7. Scopo della Sezione
-Questa sezione fornisce una panoramica dell'intero ecosistema, facilitando la comprensione dei singoli moduli.
 

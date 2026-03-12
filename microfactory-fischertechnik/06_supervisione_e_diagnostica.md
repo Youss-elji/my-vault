@@ -10,7 +10,6 @@ La supervisione della microfactory si basa su tre livelli:
 
 ## 2. Diagnostica PLC
 Il PLC effettua controlli continui su sensori, attuatori e tempi di esecuzione.
-
 ### 2.1 Tipologie di errore
 - Finecorsa non raggiunto.
 - Timeout movimento.
@@ -20,14 +19,15 @@ Il PLC effettua controlli continui su sensori, attuatori e tempi di esecuzione.
 - Mancata presenza workpiece.
 
 ### 2.2 Segnali diagnostici
-- `ERROR_STATE`
-- `SENSOR_FAULT`
-- `TIMEOUT_FLAG`
-- `MODULE_BUSY`
-- `MODULE_READY`
+- Stato errore generale
+- Fault sensori
+- Flag timeout operazioni
+- Stato occupato modulo
+- Stato pronto modulo
 
 ### 2.3 Comportamento in errore
 Il PLC entra nello stato **ERROR**, interrompe la sequenza e attende un reset.
+**Flowchart esemplificativo della logica di gestione errori:**
 
 ```mermaid
 flowchart TD
@@ -42,6 +42,7 @@ flowchart TD
     WAIT_RESET -->|Sì| RECOVER --> RESUME
     WAIT_RESET -->|No| WAIT_RESET
 ```
+>*Nota: Questo diagramma è una rappresentazione concettuale della logica di error handling, basata sul comportamento osservato del sistema e su best practice PLC.*
 
 ---
 

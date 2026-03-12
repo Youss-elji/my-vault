@@ -1,0 +1,182 @@
+# 02.5 – Sensor Station + Camera (SSC)
+
+## 1. Descrizione Generale
+
+La SSC (Sensor Station + Camera) è una stazione integrata dedicata al monitoraggio ambientale e alla supervisione visiva nella Learning Factory 4.0.
+È composta da:
+- **sensore ambientale BME680**, che rileva:
+  - temperatura,
+  - umidità,
+  - pressione atmosferica,
+  - qualità dell’aria (VOC),
+  - luminosità (tramite fotoresistore);
+- **telecamera orientabile pan/tilt**, comandabile da remoto tramite dashboard;
+- **modulo di acquisizione** collegato al **TXT Controller 4.0** (camera via USB, sensori via I/O).
+
+La stazione è montata sulla **Multi-processing Station (MPO)** e, grazie alla
+posizione elevata, consente la visione dell’intera microfactory.
+
+La SSC svolge due ruoli principali:
+
+1. **Monitoraggio ambientale** continuo dell’impianto.
+2. **Supervisione visiva** del processo attraverso immagini e movimento controllato della camera.
+
+La stazione rappresenta un componente chiave nel sistema cyber-fisico, poiché fornisce dati contestuali utili sia alla diagnostica sia alla supervisione remota.
+
+---
+
+## 2. Funzione nel Processo Produttivo
+
+La SSC non interviene nel controllo operativo del processo (nessuna logica OT), ma fornisce informazioni contestuali tramite il TXT Controller 4.0.
+
+Le sue funzioni principali sono:
+
+- acquisizione continua dei **parametri ambientali** mediante BME680;
+- generazione di **snapshot** tramite la telecamera orientabile;
+- controllo remoto del movimento pan/tilt tramite dashboard;
+- supporto alla **diagnostica visiva** della produzione;
+- invio dei dati al **TXT Controller**, che li inoltra al cloud Fischertechnik via MQTT.
+
+Questi dati sono visualizzabili sia nel **Node-RED Dashboard locale** sia nella **dashboard del cloud**, in forma numerica o grafica.
+
+---
+
+## 3. Architettura del Sistema
+
+### 3.1 Sensori Ambientali
+La SSC utilizza il modulo Bosch **BME680**, che misura:
+- Temperatura (°C)
+- Umidità relativa (%)
+- Pressione atmosferica (hPa)
+- Qualità dell’aria (VOC / AQI)
+Una **fotoresistenza** integrata fornisce la misura della luminosità ambientale.
+### 3.2 Telecamera Pan-Tilt
+La stazione integra una telecamera orientabile tramite due attuatori:
+- **asse pan** (rotazione orizzontale),
+- **asse tilt** (rotazione verticale).
+
+Il controllo avviene tramite le **API del TXT Controller**, che gestisce gli encoder e invia snapshot su richiesta alla cloud.
+### 3.3 Componenti Elettrici
+- Motori encoder per movimento pan/tilt  
+- Sensore ambientale **BME680** collegato via I²C  
+- Fotoresistenza su ingresso analogico  
+- Telecamera collegata via **USB** al TXT  
+- LED rosso attivo durante il trasferimento delle immagini al cloud
+### 3.4 Interfacciamento con TXT Controller
+
+| Funzione                  | Protocollo / API TXT     | Direzione |
+|--------------------------|---------------------------|-----------|
+| Lettura sensori ambientali | I²C (BME680)               | Ingresso TXT |
+| Misura luminosità        | ADC                        | Ingresso TXT |
+| Controllo pan/tilt       | API motori TXT (encoder)   | Uscita TXT |
+| Acquisizione immagini    | API Camera via USB         | Ingresso TXT |
+| Invio dati al cloud      | MQTT tramite TXT           | Uscita TXT |
+
+**Nota:** La SSC comunica esclusivamente con il TXT Controller, senza alcun legame con il PLC.
+
+---
+
+## 4. Diagramma Funzionale
+```mermaid
+flowchart TB
+  subgraph HBW [Magazzino Verticale HBW]
+    BME[Sensore BME680<br>I²C]
+    LDR[Fotoresistenza<br>Analogico]
+  end
+  
+  subgraph MPO [Stazione Lavorazione MPO]
+    CAM[Telecamera USB]
+    PAN[Motore Pan<br>Encoder]
+    TILT[Motore Tilt<br>Encoder]
+  end
+  
+  TXT[TXT Controller 4.0<br>GatewayPLC.py]
+  GW[IoT Gateway<br>Node-RED]
+  CLOUD[Fischertechnik Cloud]
+  
+  BME --> TXT
+  LDR --> TXT
+  CAM --> TXT
+  PAN --> TXT
+  TILT --> TXT
+  
+  TXT --MQTT--> GW
+  TXT --MQTT--> CLOUD
+  CLOUD --MQTT--> TXT
+```
+
+---
+
+## 5. Ciclo Operativo Dettagliato
+
+### 5.1 Acquisizione Dati Ambientali
+1. Il modulo BME680 esegue cicli periodici di campionamento.
+2. Il TXT riceve i valori tramite bus I²C e ingresso analogico.
+3. I dati vengono elaborati e pubblicati via MQTT sul cloud.
+4. La dashboard locale aggiorna la sezione “Environmental Station”.
+### 5.2 Ispezione Visiva
+1. L’operatore comanda pan e tilt dalla dashboard.
+2. Il TXT controlla direttamente i due motori encoder della telecamera.
+3. È possibile richiedere uno snapshot tramite HMI.
+4. L’immagine viene salvata sul TXT e, se disponibile la connessione Internet,
+   caricata nella galleria del cloud.
+### 5.3 Segnali e Stati
+- SSC_ENV_DATA_READY  
+- SSC_CAMERA_MOVING  
+- SSC_SNAPSHOT_DONE  
+- SSC_ERROR
+
+---
+
+## 6. Errori e Diagnostica
+
+### 6.1 Errori Sensori
+- Valori incoerenti (warm-up incompleto del BME680)
+- Influenza della temperatura interna del TXT
+- Saturazione della fotoresistenza in presenza di luce diretta
+- Forte variazione della luminosità che influisce su VOC/AQI
+
+### 6.2 Errori Telecamera
+- Movimenti pan/tilt incompleti dovuti a offset non calibrati
+- Motori bloccati per limiti meccanici
+- Assenza di snapshot (errore USB o camera non riconosciuta)
+
+### 6.3 Diagnostica
+- Dashboard Fischertechnik → Environmental Station
+- Node-RED → HMI SSC, movimenti pan/tilt, errori
+- Log TXT Controller (Python / API camera)
+
+---
+
+# 7. Procedura di Calibrazione della SSC
+
+1. Accedere alla dashboard Node-RED: http://192.168.0.5:1880/ui
+2. Aprire la sezione *HMI – Posizioni SSC*.
+3. Abilitare l’opzione “Attivare muovere alla pos.”.
+4. Testare:
+   - **Posizione Centro**
+   - **Posizione HBW**
+5. Correggere gli offset nella sezione dedicata.
+6. Verificare il ritorno alla posizione di riferimento tramite il comando “Posizione 0/0”.
+7. Disattivare l’opzione una volta completata la calibrazione.
+
+---
+
+## 8. Ruolo nel Contesto Industry 4.0
+
+La SSC rappresenta un tipico **sistema di sensing IoT** all'interno della Learning Factory 4.0.
+Fornisce dati contestuali fondamentali per:
+
+- supervisione visiva del processo,
+- monitoraggio ambientale continuo,
+- supporto alla diagnostica e agli allarmi,
+- integrazione con servizi cloud per analisi avanzate.
+
+Accoppiata al TXT Controller, costituisce un esempio di **sensore edge**, capace di acquisire dati localmente ed elaborarli prima della trasmissione al cloud.
+
+---
+
+## 9. Collegamenti con Altri Moduli
+- [[02.4_SLD_Sorting_Line_Detection.md]]
+- [[02.9_TXT_Controller_4.0.md]]
+

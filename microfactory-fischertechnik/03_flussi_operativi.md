@@ -111,7 +111,7 @@ sequenceDiagram
     TXT->>CLOUD: Update dashboard ordine
 ```
 
-Questo livello di dettaglio è fondamentale per descrivere la natura **cyber-fisica** del sistema: il PLC controlla il processo, ma l’IoT Gateway e il TXT gestiscono comunicazione, configurazioni e cloud.
+Questo diagramma è fondamentale per descrivere la natura **cyber-fisica** del sistema: il PLC controlla il processo, ma l’IoT Gateway e il TXT gestiscono comunicazione, configurazioni e cloud.
 
 ---
 
@@ -151,6 +151,7 @@ Questa vista è utile per descrivere il comportamento della **logica di supervis
 ## 03.5 State Machine – VGR (Esempio di Sotto-Macchina a Stati)
 
 Come esempio di approfondimento, il VGR può essere modellato come una sotto-macchina a stati.
+>**Nota:** Questa state machine è una **modellazione tecnica inferita** dal comportamento osservato del sistema. Non è esplicitamente documentata nei manuali FischerTechnik ufficiali.
 
 ```mermaid
 stateDiagram-v2
@@ -188,7 +189,7 @@ Questo schema può essere citato e riutilizzato nella descrizione del blocco fun
 
 ## 03.6 Flowchart – Gestione degli Errori
 
-Infine, una flowchart di alto livello per rappresentare la logica generale di gestione degli errori.
+Infine, una flowchart per rappresentare la logica generale di gestione degli errori.
 
 ```mermaid
 flowchart TD

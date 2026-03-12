@@ -18,10 +18,11 @@ OPC-UA gestisce lo scambio dati tra PLC e Gateway con modalità affidabile e str
 
 ## 3. MQTT (Gateway ↔ TXT ↔ Cloud)
 MQTT permette comunicazioni leggere e continue tra Gateway, TXT e Cloud. Il modello publish/subscribe assicura uno scambio dati costante senza appesantire la rete. Il TXT invia telemetrie (sensori, NFC, camera) e riceve ordini o aggiornamenti dal Cloud. I topic principali sono:
-- `/factory/txt/env` – dati ambientali SSC
-- `/factory/txt/nfc` – letture NFC
-- `/factory/txt/cmd` – comandi dal Cloud
-- `/factory/plc/sync` – sincronizzazioni tra Gateway e PLC
+- `/ftFactory/env` – dati ambientali SSC
+- `/ftFactory/nfc/read` – letture NFC
+- `/ftFactory/nfc/write` – comandi dal Cloud
+- `/ftFactory/status/plc` – sincronizzazioni tra Gateway e PLC
+- `/ftFactory/order` – ordini di produzione dal cloud al TXT
 
 ## 4. Flusso dei dati
 Il flusso seguente riassume come viaggiano comandi e informazioni tra i vari livelli.
@@ -41,14 +42,41 @@ sequenceDiagram
     GW->>PLC: Scritture OPC-UA
 ```
 
-## 5. Indirizzi IP e rete
-La rete interna segue uno schema semplice e stabile:
-- Router: `192.168.0.252`
-- Gateway: `192.168.0.5`
-- TXT: `192.168.0.10`
-- PLC: configurato via LAN
+## 5. Topologia di Rete e Indirizzi IP Ufficiali della Learning Factory 4.0
+
+La rete della Learning Factory 4.0 segue una configurazione standardizzata che garantisce comunicazione affidabile tra PLC, Gateway IoT, TXT 4.0 e Cloud.  
+Ogni dispositivo utilizza un indirizzo IP fisso, definito dal router interno TP-Link configurato in modalità **WISP**.
+
+### **Assegnazione IP dei componenti**
+
+| Componente                                | Indirizzo IP      | Ruolo nella rete                                                            |
+| ----------------------------------------- | ----------------- | --------------------------------------------------------------------------- |
+| **PLC Siemens S7-1500**                   | **192.168.0.1**   | Nodo OT principale, server OPC-UA                                           |
+| **IoT Gateway (Raspberry Pi – Node-RED)** | **192.168.0.5**   | Adattatore OPC-UA → MQTT, dashboard locale                                  |
+| **TXT Controller 4.0**                    | **192.168.0.10**  | MQTT broker, interfaccia cloud, gestione camera/NFC/sensori                 |
+| **Router TP-Link WR802N**                 | **192.168.0.252** | DHCP, rete interna, connessione WAN verso Internet, router in modalità WISP |
+
+Questa mappatura consente:
+
+- connessione **OPC-UA** stabile tra PLC e Gateway;
+- inoltro dei dati via **MQTT** dal Gateway al TXT;
+- collegamento del TXT alla **fischertechnik Cloud** tramite il router;
+- accesso locale al Node-RED tramite browser.
 - Subnet: `255.255.255.0`
-- Router in modalità WISP per collegamento alla rete esterna
+
+### **Schema semplificato della topologia di rete**
+
+```text 
+Internet 
+│
+TP-Link WR802N (192.168.0.252) 
+├── PLC S7-1500 (192.168.0.1)
+├── IoT Gateway – Node-RED (192.168.0.5) 
+└── TXT 4.0 Controller (192.168.0.10)
+```
+
+Questa struttura rappresenta il backbone della comunicazione OT/IT, assicurando che ogni nodo della fabbrica sia raggiungibile e sincronizzato con gli altri componenti e con il cloud.
+
 
 ## 6. Porte utilizzate
 | Servizio | Porta | Funzione |

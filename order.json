@@ -1,0 +1,159 @@
+[
+    {
+        "id": "8010f7ea.d51408",
+        "type": "tab",
+        "label": "ORDER - MQTT",
+        "disabled": false,
+        "info": "Invio ordini HBW via MQTT (sostituisce dashboard)"
+    },
+    {
+        "id": "83f34175.fbd2d8",
+        "type": "mqtt in",
+        "z": "8010f7ea.d51408",
+        "name": "MQTT Order In",
+        "topic": "f/c/order",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "b95c491a.61f13",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "7af27e81.3fe4b",
+                "27900658.b4fcda"
+            ]
+        ]
+    },
+    {
+        "id": "7af27e81.3fe4b",
+        "type": "function",
+        "z": "8010f7ea.d51408",
+        "name": "prepare HBW order",
+        "func": "var ts = new Date().toISOString();\n\nif (!msg.payload || !msg.payload.type) {\n    node.warn(\"Payload non valido: atteso { type: 'BLUE|RED|WHITE' }\");\n    return null;\n}\n\nmsg.nodetype = \"inject\";\nmsg.injectType = \"write\";\n\nmsg.addressSpaceItems = [\n  {\n    \"nodeId\": \"ns=3;s=\\\"gtyp_Interface_Dashboard\\\".\\\"Publish\\\".\\\"OrderWorkpieceButton\\\".\\\"s_type\\\"\",\n    \"datatypeName\": \"String\"\n  },\n  {\n    \"nodeId\": \"ns=3;s=\\\"gtyp_Interface_Dashboard\\\".\\\"Publish\\\".\\\"OrderWorkpieceButton\\\".\\\"ldt_ts\\\"\",\n    \"datatypeName\": \"DateTime\"\n  }\n];\n\nmsg.valuesToWrite = [\n  msg.payload.type,\n  ts\n];\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "25c4409e.fc04b8"
+            ]
+        ]
+    },
+    {
+        "id": "c1b1e21c.0a3dd8",
+        "type": "debug",
+        "z": "8010f7ea.d51408",
+        "name": "f/o/order",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 760,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "25c4409e.fc04b8",
+        "type": "OPCUA-IIoT-Write",
+        "z": "8010f7ea.d51408",
+        "connector": "74a7d84.2350d28",
+        "name": "",
+        "justValue": true,
+        "showStatusActivities": false,
+        "showErrors": true,
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "a9eca69b.88ffb"
+            ]
+        ]
+    },
+    {
+        "id": "a9eca69b.88ffb",
+        "type": "OPCUA-IIoT-Response",
+        "z": "8010f7ea.d51408",
+        "name": "",
+        "compressStructure": false,
+        "showStatusActivities": false,
+        "showErrors": false,
+        "activateUnsetFilter": false,
+        "activateFilters": false,
+        "negateFilter": false,
+        "filters": [],
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "c1b1e21c.0a3dd8"
+            ]
+        ]
+    },
+    {
+        "id": "27900658.b4fcda",
+        "type": "debug",
+        "z": "8010f7ea.d51408",
+        "name": "mqtt order in",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 250,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b95c491a.61f13",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "MQTT Broker",
+        "broker": "192.168.0.10",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "74a7d84.2350d28",
+        "type": "OPCUA-IIoT-Connector",
+        "z": "",
+        "discoveryUrl": "",
+        "endpoint": "opc.tcp://192.168.0.1:4840",
+        "keepSessionAlive": true,
+        "loginEnabled": false,
+        "securityPolicy": "None",
+        "securityMode": "NONE",
+        "name": "SIEMENS PLC@192.168.0.1",
+        "showErrors": true,
+        "individualCerts": false,
+        "publicCertificateFile": "",
+        "privateKeyFile": "",
+        "defaultSecureTokenLifetime": "",
+        "endpointMustExist": false,
+        "autoSelectRightEndpoint": false,
+        "strategyMaxRetry": "",
+        "strategyInitialDelay": "",
+        "strategyMaxDelay": "",
+        "strategyRandomisationFactor": "",
+        "requestedSessionTimeout": "",
+        "connectionStartDelay": "",
+        "reconnectDelay": "",
+        "maxBadSessionRequests": ""
+    }
+]

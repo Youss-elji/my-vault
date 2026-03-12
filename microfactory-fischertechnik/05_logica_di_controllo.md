@@ -26,15 +26,15 @@ flowchart TD
 ## 3. Coordinamento dei moduli
 La supervisione globale è gestita dal blocco principale (FB_SYSTEM). Ogni stazione ha un proprio blocco dedicato che gestisce: condizioni di esecuzione, timeout, errori e conferme.
 
-| Blocco | Stazione | Funzioni principali |
-|--------|----------|---------------------|
-| FB_VGR | VGR | movimenti assi, presa/rilascio, sicurezza finecorsa |
-| FB_HBW | HBW | posizionamento verticale/orizzontale, gestione slot |
-| FB_MPO | MPO | controllo piano, lavorazione termica, timer |
-| FB_SLD | SLD | rilevamento colore, smistamento |
-| FB_DPS | DPS | presenza pezzo, sincronizzazione NFC |
-| FB_SYSTEM | Sistema | sequenze globali, stati macchina, errori |
-
+| Blocco    | Stazione | Funzioni principali                                 |
+| --------- | -------- | --------------------------------------------------- |
+| FB_VGR    | VGR      | movimenti assi, presa/rilascio, sicurezza finecorsa |
+| FB_HBW    | HBW      | posizionamento verticale/orizzontale, gestione slot |
+| FB_MPO    | MPO      | controllo piano, lavorazione termica, timer         |
+| FB_SLD    | SLD      | rilevamento colore, smistamento                     |
+| FB_DPS*   | DPS      | presenza pezzo, sincronizzazione NFC                |
+| FB_SYSTEM | Sistema  | sequenze globali, stati macchina, errori            |
+>*Nota: FB_DPS è inferito dalla struttura modulare del programma PLC, ma non è esplicitamente nominato nella documentazione ufficiale FischerTechnik.
 ## 4. Sequenza operativa
 La produzione segue una sequenza fissa gestita dal PLC.
 
